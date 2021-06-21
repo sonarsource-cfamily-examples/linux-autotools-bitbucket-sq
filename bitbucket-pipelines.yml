@@ -1,0 +1,23 @@
+image: gcc:10.2
+
+clone:
+  depth: full  # SonarCloud scanner needs the full history to assign issues properly
+
+pipelines:
+  branches:
+    master:
+      - step:
+          name: Build and analyze on SonarQube
+          script:
+            - curl --create-dirs -sSLo $HOME/.sonar/build-wrapper-linux-x86.zip ${SONAR_HOST_URL}/static/cpp/build-wrapper-linux-x86.zip
+            - unzip -o $HOME/.sonar/build-wrapper-linux-x86.zip -d $HOME/.sonar/
+            - export PATH=$HOME/.sonar/build-wrapper-linux-x86:$PATH
+            - export BW_OUTPUT=bw-output
+            - autoreconf --install
+            - ./configure
+            - build-wrapper-linux-x86-64 --out-dir $BW_OUTPUT make clean all
+            - pipe: sonarsource/sonarqube-scan:1.0.0
+              variables:
+               EXTRA_ARGS: -Dsonar.cfamily.build-wrapper-output=$BW_OUTPUT
+               SONAR_HOST_URL: $SONAR_HOST_URL
+               SONAR_TOKEN: $SONAR_TOKEN
