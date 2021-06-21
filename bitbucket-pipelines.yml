@@ -1,7 +1,7 @@
 image: gcc:10.2
 
 clone:
-  depth: full  # SonarCloud scanner needs the full history to assign issues properly
+  depth: full  # SonarQube scanner needs the full history to assign issues properly
 
 pipelines:
   branches:

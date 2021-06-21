@@ -1,8 +1,6 @@
 = C++ example project scanned on SonarQube using Bitbucket Cloud pipelines
 
-To analyze a C/C++/Objective-C project on Bitbucket pipelines with SonarQube, follow the steps described here: .
-
-To sum up, you need to:
+To analyze a C/C++/Objective-C project on Bitbucket pipelines with SonarQube, you need to:
 
 . Enable pipelines in your Bitbucket Cloud repository
 . Add a repository variable `SONAR_TOKEN` with a token generated in SonarQube (see https://docs.sonarqube.org/latest/user-guide/user-token/[Generating and Using Tokens])
