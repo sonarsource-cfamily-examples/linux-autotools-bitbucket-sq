@@ -1,3 +1,21 @@
+= C++ example project scanned on SonarQube using Bitbucket Cloud pipelines
+
+To analyze a C/C++/Objective-C project on Bitbucket pipelines with SonarQube, you need to:
+
+. Enable pipelines in your Bitbucket Cloud repository
+. Add a repository variable `SONAR_TOKEN` with a token generated in SonarQube (see https://docs.sonarqube.org/latest/user-guide/user-token/[Generating and Using Tokens])
+. Add a repository variable `SONAR_HOST_URL` that points to your SonarQube server (e.g., https://example.com:9000)
+. In your `bitbucket-pipelines.yml` file:
+.. Download the https://docs.sonarqube.org/latest/analysis/languages/cfamily/#header-4[`build wrapper`] and wrap your compilation with it
+.. Use `sonarqube-scan` pipe with the build wrapper output directory as an extra argument
+
+You can take a look at the link:sonar-project.properties[sonar-project.properties] and link:bitbucket-pipelines.yml[bitbucket-pipelines.yml] to see it in practice.
+
+= Documentation
+
+- https://docs.sonarqube.org/latest/analysis/languages/cfamily/[Documentation of the C/C++/Objective-C plugin and its Build Wrapper]
+- https://docs.sonarqube.org/latest/analysis/bitbucket-cloud-integration/[Bitbucket Cloud Integration]
+
 = Linux\Autotools
 
 A build of the https://github.com/sc-sq-c-family-examples/code[code repository] on a Linux platform using GNU Autotools build system.
