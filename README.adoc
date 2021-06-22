@@ -4,9 +4,9 @@ To analyze a C/C++/Objective-C project on Bitbucket pipelines with SonarQube, yo
 
 . Enable pipelines in your Bitbucket Cloud repository
 . Add a repository variable `SONAR_TOKEN` with a token generated in SonarQube (see https://docs.sonarqube.org/latest/user-guide/user-token/[Generating and Using Tokens])
-. Add a repository variable `SONAR_HOST_URL` that points to your SonarQube server
+. Add a repository variable `SONAR_HOST_URL` that points to your SonarQube server (e.g., https://example.com:9000)
 . In your `bitbucket-pipelines.yml` file:
-.. Download the https://sonarcloud.io/documentation/analysis/languages/cfamily/#analysis-steps-using-build-wrapper[`build wrapper`] and wrap your compilation with it
+.. Download the https://docs.sonarqube.org/latest/analysis/languages/cfamily/#header-4[`build wrapper`] and wrap your compilation with it
 .. Use `sonarqube-scan` pipe with the build wrapper output directory as an extra argument
 
 You can take a look at the link:sonar-project.properties[sonar-project.properties] and link:bitbucket-pipelines.yml[bitbucket-pipelines.yml] to see it in practice.
