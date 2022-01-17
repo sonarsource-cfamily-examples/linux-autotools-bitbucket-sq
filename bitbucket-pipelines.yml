@@ -11,13 +11,11 @@ pipelines:
           script:
             - curl --create-dirs -sSLo $HOME/.sonar/build-wrapper-linux-x86.zip ${SONAR_HOST_URL}/static/cpp/build-wrapper-linux-x86.zip
             - unzip -o $HOME/.sonar/build-wrapper-linux-x86.zip -d $HOME/.sonar/
-            - export PATH=$HOME/.sonar/build-wrapper-linux-x86:$PATH
+            - curl -sSLo $HOME/.sonar/sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip
+            - unzip -o $HOME/.sonar/sonar-scanner.zip -d $HOME/.sonar/
+            - export PATH="$HOME/.sonar/sonar-scanner-4.6.2.2472-linux/bin:$HOME/.sonar/build-wrapper-linux-x86:$PATH"
             - export BW_OUTPUT=build_wrapper_output_directory
             - autoreconf --install
             - ./configure
             - build-wrapper-linux-x86-64 --out-dir $BW_OUTPUT make clean all
-            - pipe: sonarsource/sonarqube-scan:1.0.0
-              variables:
-               EXTRA_ARGS: -Dsonar.cfamily.build-wrapper-output=$BW_OUTPUT
-               SONAR_HOST_URL: $SONAR_HOST_URL
-               SONAR_TOKEN: $SONAR_TOKEN
+            - sonar-scanner -Dsonar.cfamily.build-wrapper-output=$BW_OUTPUT 
