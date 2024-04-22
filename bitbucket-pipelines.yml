@@ -18,4 +18,4 @@ pipelines:
             - autoreconf --install
             - ./configure
             - build-wrapper-linux-x86-64 --out-dir $BW_OUTPUT make clean all
-            - sonar-scanner -Dsonar.cfamily.build-wrapper-output=$BW_OUTPUT 
+            - sonar-scanner -Dsonar.cfamily.compile-commands=$BW_OUTPUT/compile_commands.json
