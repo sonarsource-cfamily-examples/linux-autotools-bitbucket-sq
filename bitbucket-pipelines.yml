@@ -18,4 +18,6 @@ pipelines:
             - autoreconf --install
             - ./configure
             - build-wrapper-linux-x86-64 --out-dir $BW_OUTPUT make clean all
-            - sonar-scanner -Dsonar.cfamily.build-wrapper-output=$BW_OUTPUT 
+            - sonar-scanner -Dsonar.cfamily.compile-commands=$BW_OUTPUT/compile_commands.json
+            # if you are using using SonarQube 10.5 or earlier, replace -Dsonar.cfamily.compile-commands with -Dsonar.cfamily.build-wrapper-output=$BW_OUTPUT
+            # as build-wrapper does not generate a compile_commands.json file before SonarQube 10.6

@@ -7,7 +7,7 @@ To analyze a C, C++ and Objective-C project on Bitbucket pipelines with SonarQub
 . Add a repository variable `SONAR_TOKEN` with a token generated in SonarQube (see https://docs.sonarqube.org/latest/user-guide/user-token/[Generating and Using Tokens])
 . Add a repository variable `SONAR_HOST_URL` that points to your SonarQube server (e.g., https://example.com:9000)
 . In your `bitbucket-pipelines.yml` file:
-.. Download the https://docs.sonarqube.org/latest/analyzing-source-code/languages/c-family/#using-build-wrapper[`build wrapper`] and wrap your compilation with it
+.. Download the https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/languages/c-family/prerequisites/#using-buildwrapper[`build wrapper`] and wrap your compilation with it
 .. Download and launch https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/[`sonar-scanner`]
 
 You can take a look at the link:sonar-project.properties[sonar-project.properties] and link:bitbucket-pipelines.yml[bitbucket-pipelines.yml] to see it in practice.
@@ -16,8 +16,8 @@ You can take a look at the link:sonar-project.properties[sonar-project.propertie
 
 - https://docs.sonarqube.org/latest/analysis/languages/cfamily/[Documentation of the C, C++ and Objective-C plugin and its Build Wrapper]
 - https://docs.sonarqube.org/latest/analysis/bitbucket-cloud-integration/[Bitbucket Cloud Integration]
-- https://docs.sonarqube.org/latest/analyzing-source-code/languages/c-family/#analysis-cache[Configuring C, C++ and Objective-C analysis cache]
-- https://docs.sonarqube.org/latest/analyzing-source-code/languages/c-family/#parallel-code-scan[Configuring multithreaded execution]
+- https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/languages/c-family/customizing-the-analysis/#analysis-cache[Configuring C, C++ and Objective-C analysis cache]
+- https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/languages/c-family/customizing-the-analysis/#parallel-code-scan[Configuring multithreaded execution]
 
 = Linux\Autotools
 
